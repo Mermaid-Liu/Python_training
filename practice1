@@ -1,0 +1,112 @@
+menu = {
+    '汽车': {
+        '轿车': {
+            '宝马': {
+                '宝马760': {},
+                '宝马M5': {},
+                '宝马M3': {}
+            },
+            '奔驰': {
+                '奔驰C180': {},
+                '奔驰E260': {},
+                '奔驰S600': {},
+            },
+            '奥迪': {
+                '奥迪A4L': {},
+            },
+        },
+        '越野车': {
+            '保时捷': {
+                '保时捷Macan': {},
+                '保时捷Cayenne': {},
+            },
+            '路虎': {},
+            '英菲尼迪': {},
+        },
+        '卡车': {},
+        '公交车': {},
+    },
+    '飞机': {
+        '大飞机': {
+            "大1": {
+                'xxx': {}
+            }
+        },
+        '小飞机': {
+            '小1': {
+                'xxx': {}
+            }
+        },
+        '直升机': {},
+    },
+    '大炮': {}
+}
+
+tag=True
+while tag:
+    print("一级菜单为：")
+    for key in menu:
+        print(key)
+    L1=input('请选择一级菜单：')
+    if L1=='R':
+        print("返回上一层")
+        break
+    elif L1=='q':
+        print('退出')
+        tag=False;
+        continue
+    elif L1 in menu.keys():
+        while tag:
+            print("二级菜单为：")
+            for item in menu[L1]:
+                print(item)
+            L2=input("选择二级菜单：")
+            if L2=='R':
+                print('返回上一级菜单')
+                break;
+            elif L2=='q':
+                print('退出')
+                tag=False
+                continue
+            elif L2 in menu[L1]:
+                while tag:
+                    print("三级菜单为：")
+                    for j in menu[L1][L2]:
+                        print(j)
+                    L3=input("选择三级菜单")
+                    if L3=='R':
+                        print("返回上一级菜单")
+                        break;
+                    elif L3=='q':
+                        print("退出")
+                        tag=False
+                        continue
+            elif L3 in menu[L1][L2]:
+                while tag:
+                    print("四级菜单为：")
+                    for k in menu[L1][L2][L3]:
+                        print(k);
+                        L4=input("选择四级菜单")
+                        if L4=='R':
+                            print('返回上一级菜单')
+                            break;
+                        elif L4=='q':
+                            print('退出')
+                            tag=False;
+                            continue
+                        elif L4 in menu[L1][L2][L3]:
+                            tag=False
+                            print(L1,L2,L3,L4)
+                            continue;
+                        else:
+                            print("输入错误，请重新选择四级菜单")
+                            continue
+            else:
+                print("输入错误，请重新选择三级菜单")
+                continue
+        else:
+            print("输入错误，请重新选择二级菜单")
+            continue;
+    else:
+        print("输入错误，请重新选择一级菜单")
+        continue;
