@@ -1,0 +1,3 @@
+Albert|Albert123|3000
+Mermaid|asd123|5000
+admin|admin|1314
