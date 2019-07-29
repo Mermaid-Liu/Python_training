@@ -1,0 +1,47 @@
+1、在没有学习类这个概念时，数据与功能是分离的
+class exec:
+    def __init__(self,proc_name):
+        self.host='127.0.0.1'
+        self.port='3306'
+        self.db='db1'
+        self.charset='utf-8'
+        self.proc_name=proc_name
+ex=exec('存储名称')
+ex2=exec('存储名称2')
+print(ex.__dict__)
+print(ex2.__dict__)
+
+# 使用组合与继承设计一个学生选择课程的程序，使老师和学生初始化都具有课程属性，
+# 但是属性值为空，可以动态添加，
+# 可打印出老师教授的的课程和学生学习的课程，可以打印出课程名字和价格，尽量避免写重复代码（提示：学生和老师都是属于人，都有课程属性）
+class select_course:
+    def __init__(self,courseName,price):
+        self.courseName=courseName
+        self.price=price
+    def show_Course(self):
+        print('课程为'%(self.courseName, self.price))
+class people:
+    school = 'deepshare'
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+class teacher(people):
+    def __init__(self,name,age,course,price):
+        super().__init__(name,age)
+        self.course=course
+        self.price=price
+    def show_teacher(self):
+        print('教师授的课程为：'%self.course)
+        print('教师授的价格为'%self.price)
+class student(people):
+    def __init__(self,name,age,course,price):
+        super().__init__(name,age)
+        self.course=course
+        self.price=price
+    def show_student(self):
+        print('学生选择的课程为'%self.course)
+        print('学生选择的价格为' % self.price)
+tea1=teacher('mermaid',28,'AI',3000)
+stu1=student('alisa',29,'Python',4000)
+print(tea1.course,tea1.price)
+print(stu1.course,stu1.price)
