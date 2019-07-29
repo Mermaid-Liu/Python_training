@@ -1,0 +1,52 @@
+import abc
+class Pet(metaclass=abc.ABCMeta):
+    def __init__(self,name):
+        self.__name=name
+    @property
+    def name(self):
+        return'<名字:%s>'%self.__name
+    @name.setter
+    def name(self,name):
+        self.__name=name
+    @abc.abstractmethod
+    def eat(self):
+        pass
+class Cat(Pet):
+    def __init__(self,name,type):
+        super().__init__(name)
+        self.__type=type
+    @property
+    def type(self):
+        return self.__type
+    def eat(self):
+        print('吃猫粮')
+class Dog(Pet):
+    def __init__(self,name,type):
+        super().__init__(name)
+        self.type=type
+    def eat(self):
+        print('吃狗粮')
+class Pig(Pet):
+    def __init__(self,name,type):
+        super().__init__(name)
+        self.type=type
+    def eat(self):
+        print('吃猪粮')
+class Master:
+    def __init__(self,name,pet):
+        self.name=name
+        self.pet=pet
+    def feed(self):
+        print('%s准备好宠物粮食'%self.name)
+        print('%s的%s来进食'%(self.pet.type,self.pet.name))
+        self.pet.eat()
+cat=Cat('猫咪','Cat')
+dog=Dog('狗狗','Dog')
+pig=Pig('猪猪','Pig')
+cpeo=Master('小鱼干',cat)
+dpeo=Master('小骨头',dog)
+ppeo=Master('大肉',pig)
+
+cpeo.feed()
+dpeo.feed()
+ppeo.feed()
